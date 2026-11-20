@@ -1,0 +1,4 @@
+interface:
+  display_name: "CEX 业务测试点评审"
+  short_description: "依据需求和业务模型评审测试点的遗漏、错误预期、重复、证据和可验证性"
+  default_prompt: "使用 $cex-testpoint-review，依据原始业务资料评审这份测试点清单，定位遗漏和错误预期，并按本次范围给修订建议。"

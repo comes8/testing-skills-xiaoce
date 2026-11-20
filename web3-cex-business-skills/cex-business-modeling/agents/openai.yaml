@@ -1,0 +1,4 @@
+interface:
+  display_name: "CEX 业务链路与规则建模"
+  short_description: "把交易需求转成可追溯的业务链路、状态流转、数量资金关系和验证依据"
+  default_prompt: "使用 $cex-business-modeling，梳理这些资料涉及的业务链路、规则、状态和数量资金关系，标注来源及待确认边界。"

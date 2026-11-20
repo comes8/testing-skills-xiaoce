@@ -2,43 +2,45 @@
 
 面向现货撮合、合约交易和资金账务的需求分析与业务测试设计。执行沿用已有测试平台；这里维护业务分析方法、任务 Prompt 和可复查样例。
 
+当前已交付 **4 个业务 Skill、7 份 Prompt**。每个 Skill 自包含，可直接消费原始资料，也可复用上一阶段产物，不要求安装整套规划能力。
+
+| 阶段 | Skill | 配套 Prompt |
+|---|---|---|
+| 需求分析与补全 | [cex-requirement-review](cex-requirement-review/SKILL.md) | [P01 需求分析](prompts/P01-requirement-analysis.md)、[P02 需求评审](prompts/P02-requirement-review.md) |
+| 业务建模 | [cex-business-modeling](cex-business-modeling/SKILL.md) | [P03 业务链路](prompts/P03-business-flow-modeling.md)、[P04 规则与状态](prompts/P04-rule-state-modeling.md) |
+| 测试点设计与补充 | [cex-testpoint-design](cex-testpoint-design/SKILL.md) | [P05 核心测试点](prompts/P05-core-testpoint-design.md)、[P06 增量补充](prompts/P06-testpoint-supplement.md) |
+| 测试点评审 | [cex-testpoint-review](cex-testpoint-review/SKILL.md) | [P07 评审与修订](prompts/P07-testpoint-review.md) |
+
 ## 第一批
 
-- **1 个 Skill**：`cex-requirement-review`，需求分析、评审与补全。
-- **2 份 Prompt**：P01 需求解读与业务分析、P02 需求评审与缺口补充。
-- **验证材料**：三个合成输入、验收检查口径和独立评估记录。它们不是任何真实交易所的规则或真实交易执行证据。
+交付需求分析、评审与补全 Skill 和 P01/P02。评估保留了首轮发现的一处只减仓判据遗漏及其修订，详见 [第一批修订与复核](evals/results/revision-01-review.md)。新一轮应用分别检验“不增仓”和“不反向”，并检查了多头、空头同方向增仓的反例。
 
-评估保留了首轮发现的一处只减仓判据遗漏及其修订，详见 [修订与复核记录](evals/results/revision-01-review.md)。新一轮应用已分别检验“不增仓”和“不反向”，并检查了多头、空头同方向增仓的反例。
+## 第二批
 
-```text
-web3-cex-business-skills/
-├── cex-requirement-review/
-│   ├── SKILL.md
-│   ├── agents/openai.yaml
-│   └── references/
-├── prompts/
-│   ├── P01-requirement-analysis.md
-│   └── P02-requirement-review.md
-└── evals/
-    ├── cases/
-    ├── acceptance.md
-    └── results/
-```
+新增业务建模、测试点设计、测试点评审三个 Skill，以及 P03—P07 五份 Prompt。重点处理：
 
-先阅读 [Skill 入口](cex-requirement-review/SKILL.md)，或复制 [P01](prompts/P01-requirement-analysis.md) / [P02](prompts/P02-requirement-review.md) 的正文，附上实际资料。Prompt 中的双花括号是有意保留的输入变量，可直接用附件或资料路径替代。
+- 订单、仓位、资金和展示的独立状态与收敛关系。
+- 原量、累计成交、活动剩余、取消量及冻结资金的口径。
+- 从来源和不变量推导有具体条件、预期与核对方法的测试点。
+- 区分规则未定与执行准备不足，未知策略不写成固定答案。
+- 增量补漏、错误预期修订、真正重复与不同竞争顺序的区分，保留 ID 和变更映射。
 
-在 Codex 中注册该 Skill 后，可这样发起任务：
+验证材料位于 `evals/batch-02/`，先读 [第二批评估与修订](evals/batch-02/results/batch-02-evaluation.md)。记录保留了阶段金额判据和真实重复资金效果的修订，原样试跑不是全部通过的标准答案。全部合成输入和文本试跑只检查设计与评审能力，不是实际交易、撮合、账务或平台自动化运行证据。
+
+## 使用与交接
+
+可按“需求分析 → 业务模型 → 测试点 → 评审修订”使用，也可只选一个阶段。Prompt 的双花括号是有意保留的输入变量，替换为实际资料或附件引用即可。
 
 ```text
-使用 $cex-requirement-review，从业务、研发和测开视角分析这些需求与技术资料。
-梳理相关流程、规则和状态，找出缺口和冲突，给出有来源的验收依据。
-本次先完成需求分析与评审，不展开完整测试用例。
+使用 $cex-business-modeling，依据这些需求和现有分析梳理相关业务链路、状态和资金关系。
+使用 $cex-testpoint-design，基于上述模型生成核心测试点，分开记录确定预期和待确认分支。
+使用 $cex-testpoint-review，依据原始资料评审清单，只修订受影响条目并保留已有编号。
 ```
 
-本目录是源码交付，不表示已经安装到全局技能目录。仅使用 Skill 时复制 `cex-requirement-review` 整个目录，保持内部参考文件路径。它不依赖其他八个尚未交付的规划 Skill，也不要求连接某个具体平台。
+这是源码交付，不表示已安装到全局技能目录。使用单个 Skill 时复制相应整个目录，保持内部参考文件路径。本次没有自动运行上述示例指令或注册平台配置。
 
-## 平台使用边界
+## 平台边界
 
-P01/P02 可以作为独立任务提示词。接入 N-Tester 的需求分析、Writer/Reviewer 等阶段时，需要核对调用链和输出字段；本批不修改平台、不注册配置、不把普通报告冒充接口场景 JSON，也不执行交易或压测。
+Prompt 可独立作为任务指令。接入 N-Tester 等平台时，需要核对阶段、字段和输出格式；普通 Markdown 报告不能冒充接口场景 JSON 或已写入的测试资产。本系列不另建接口/UI/性能执行框架，不执行交易或压测。
 
-本批聚焦需求准备程度。后续业务建模、测试点、专项和回归能力按分批计划补齐；当前不会因为引用未来能力而阻塞独立使用。
+后续现货、合约、资金专项以及详细用例与回归能力仍按分批计划交付，当前阶段不依赖尚未创建的 Skill。

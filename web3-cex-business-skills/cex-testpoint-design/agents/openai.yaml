@@ -1,0 +1,4 @@
+interface:
+  display_name: "CEX 业务测试点设计与补充"
+  short_description: "从需求和业务模型推导正反向、边界、并发及恢复测试点，支持增量补充"
+  default_prompt: "使用 $cex-testpoint-design，根据这些需求和已有模型生成或增量补充测试点，保留预期依据、核对方法及原编号。"
