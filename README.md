@@ -2,11 +2,12 @@
 
 这是一个面向 Codex 的软件测试技能仓库，适合测试学习者、测试工程师和测试开发练习场景使用。
 
-当前包含 3 个 skill：
+当前包含 4 个 skill：
 
 - `test-case-xmind`：根据需求文档、前端技术文档、后端技术文档、交互稿、接口文档等资料生成结构化测试用例，并导出 `.xmind` 文件。
 - `api-scenario-automation`：根据接口文档、测试用例、OpenAPI、Swagger、Postman、Apipost、后端路由或 Markdown 接口说明，生成场景式接口自动化测试。
 - `ui-scenario-automation`：根据测试用例、需求文档、UI 稿、截图或本地页面，使用 Codex 内置浏览器执行 UI 场景验证，并输出报告和截图。
+- `cex-requirement-review`：从业务、研发和测开视角分析及评审 CEX 现货、合约和资金需求，识别规则缺口、系统影响及验收依据。源码、两份配套 Prompt 和合成评估材料位于 [`web3-cex-business-skills/`](web3-cex-business-skills/README.md)。
 
 ## 适用场景
 
@@ -27,9 +28,10 @@
 cp -R test-case-xmind ~/.codex/skills/
 cp -R api-scenario-automation ~/.codex/skills/
 cp -R ui-scenario-automation ~/.codex/skills/
+cp -R web3-cex-business-skills/cex-requirement-review ~/.codex/skills/
 ```
 
-重启或刷新 Codex 后，即可通过 `$test-case-xmind`、`$api-scenario-automation` 和 `$ui-scenario-automation` 使用。
+重启或刷新 Codex 后，即可通过 `$test-case-xmind`、`$api-scenario-automation`、`$ui-scenario-automation` 和 `$cex-requirement-review` 使用。
 
 ## 使用方式
 

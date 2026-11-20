@@ -1,0 +1,4 @@
+interface:
+  display_name: "CEX 需求分析、评审与补全"
+  short_description: "从业务、开发与测开视角分析现货和合约需求，识别规则缺口、系统影响及验收条件"
+  default_prompt: "使用 $cex-requirement-review 分析这些需求与技术资料，梳理业务规则、状态和资金变化，评审遗漏与冲突，并给出有来源的验收条件。"
