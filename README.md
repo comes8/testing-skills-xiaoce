@@ -2,15 +2,17 @@
 
 这是一个面向 Codex 的软件测试技能仓库，适合测试学习者、测试工程师和测试开发练习场景使用。
 
-当前包含 10 个 skill：
+当前包含 12 个 skill：
 
 - `test-case-xmind`：根据需求文档、前端技术文档、后端技术文档、交互稿、接口文档等资料生成结构化测试用例，并导出 `.xmind` 文件。
 - `api-scenario-automation`：根据接口文档、测试用例、OpenAPI、Swagger、Postman、Apipost、后端路由或 Markdown 接口说明，生成场景式接口自动化测试。
 - `ui-scenario-automation`：根据测试用例、需求文档、UI 稿、截图或本地页面，使用 Codex 内置浏览器执行 UI 场景验证，并输出报告和截图。
-- `cex-requirement-review`：从业务、研发和测开视角分析及评审 CEX 现货、合约和资金需求，识别规则缺口、系统影响及验收依据。源码、两份配套 Prompt 和合成评估材料位于 [`web3-cex-business-skills/`](web3-cex-business-skills/README.md)。
+- `cex-requirement-review`：从业务、研发和测开视角分析及评审 CEX 现货、合约和资金需求，识别规则缺口、系统影响及验收依据。业务系列源码、配套 Prompt 和合成评估材料位于 [`web3-cex-business-skills/`](web3-cex-business-skills/README.md)。
 - `cex-business-modeling`：梳理 CEX 业务链路、规则、独立状态和数量资金关系，输出可追溯模型。
 - `cex-testpoint-design`：根据需求与模型生成业务测试点，支持异常、边界、并发和一致性的增量补充。
 - `cex-testpoint-review`：依据原始资料评审测试点的错误预期、覆盖遗漏、重复及可验证性，并按需修订。
+- `cex-testcase-design-review`：将业务测试点展开为详细用例，评审并局部修订前置、步骤、预期和证据。
+- `cex-change-regression`：追溯业务变更与共享依赖影响，按版本、风险和预算选择必要回归与先行集。
 - `cex-spot-matching`：现货订单、撮合资格与顺序、撤改单竞争及相关行情恢复专项测试设计。
 - `cex-futures-risk`：合约仓位、保证金、估值结算和风险处置专项场景分析与核对。
 - `cex-funds-reconciliation`：充提划转、费用、资金腿与账务/链上证据的一致性专项设计。
@@ -38,12 +40,14 @@ cp -R web3-cex-business-skills/cex-requirement-review ~/.codex/skills/
 cp -R web3-cex-business-skills/cex-business-modeling ~/.codex/skills/
 cp -R web3-cex-business-skills/cex-testpoint-design ~/.codex/skills/
 cp -R web3-cex-business-skills/cex-testpoint-review ~/.codex/skills/
+cp -R web3-cex-business-skills/cex-testcase-design-review ~/.codex/skills/
+cp -R web3-cex-business-skills/cex-change-regression ~/.codex/skills/
 cp -R web3-cex-business-skills/cex-spot-matching ~/.codex/skills/
 cp -R web3-cex-business-skills/cex-futures-risk ~/.codex/skills/
 cp -R web3-cex-business-skills/cex-funds-reconciliation ~/.codex/skills/
 ```
 
-重启或刷新 Codex 后，按对应的 `$skill-name` 调用。业务系列的七个 Skill 与已交付 Prompt 入口见 [`web3-cex-business-skills/`](web3-cex-business-skills/README.md)。
+重启或刷新 Codex 后，按对应的 `$skill-name` 调用。业务系列的九个 Skill 与十四份 Prompt 入口见 [`web3-cex-business-skills/`](web3-cex-business-skills/README.md)。
 
 ## 使用方式
 
@@ -172,3 +176,4 @@ python3 api-scenario-automation/scripts/export_pytest.py scenarios.yaml --output
 脚本只使用 Python 标准库，不需要额外安装依赖。生成的接口自动化测试也只使用 Python 标准库，可通过 `python3 -m unittest` 运行；如果项目安装了 pytest，也可以被 pytest 收集执行。
 
 `ui-scenario-automation` 默认不要求用户安装 Playwright。它优先使用 Codex 内置浏览器执行 UI 场景；只有在用户需要长期沉淀、CI 回归或团队协作脚本时，才建议导出 Playwright。
+

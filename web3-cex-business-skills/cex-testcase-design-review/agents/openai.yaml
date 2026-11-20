@@ -1,0 +1,4 @@
+interface:
+  display_name: "CEX 业务用例设计与评审"
+  short_description: "将交易业务测试点展开为可复核的前置、步骤与逐步预期，并评审数据和判据缺口"
+  default_prompt: "使用 $cex-testcase-design-review，依据本次原始资料和已有测试资产完成相应业务设计与评审，保留来源、编号及未决范围。"

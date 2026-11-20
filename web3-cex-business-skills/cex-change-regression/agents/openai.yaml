@@ -1,0 +1,4 @@
+interface:
+  display_name: "CEX 变更影响与回归分析"
+  short_description: "对比业务和实现变更，追溯关联影响并按风险与证据选择回归范围、版本和优先级"
+  default_prompt: "使用 $cex-change-regression，依据本次原始资料和已有测试资产完成相应业务设计与评审，保留来源、编号及未决范围。"
