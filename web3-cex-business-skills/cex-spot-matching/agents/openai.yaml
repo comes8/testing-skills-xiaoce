@@ -1,0 +1,4 @@
+interface:
+  display_name: "CEX 现货与撮合专项"
+  short_description: "分析现货订单、撮合优先级、成交价格、撤改单竞争及行情恢复的业务测试设计"
+  default_prompt: "使用 $cex-spot-matching，以初始订单簿和项目规则推导现货委托成交、余量、资金和行情变化，并设计关键专项测试点。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "CEX 资金账务与一致性专项"
+  short_description: "分析充值提现划转、冻结结算、费用和账务对账，识别跨服务与链上资金风险"
+  default_prompt: "使用 $cex-funds-reconciliation，按资产、资金腿和账务阶段核对本次充提划转或结算，设计可独立验证的专项场景。"

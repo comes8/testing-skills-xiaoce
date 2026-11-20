@@ -2,7 +2,7 @@
 
 这是一个面向 Codex 的软件测试技能仓库，适合测试学习者、测试工程师和测试开发练习场景使用。
 
-当前包含 7 个 skill：
+当前包含 10 个 skill：
 
 - `test-case-xmind`：根据需求文档、前端技术文档、后端技术文档、交互稿、接口文档等资料生成结构化测试用例，并导出 `.xmind` 文件。
 - `api-scenario-automation`：根据接口文档、测试用例、OpenAPI、Swagger、Postman、Apipost、后端路由或 Markdown 接口说明，生成场景式接口自动化测试。
@@ -11,6 +11,9 @@
 - `cex-business-modeling`：梳理 CEX 业务链路、规则、独立状态和数量资金关系，输出可追溯模型。
 - `cex-testpoint-design`：根据需求与模型生成业务测试点，支持异常、边界、并发和一致性的增量补充。
 - `cex-testpoint-review`：依据原始资料评审测试点的错误预期、覆盖遗漏、重复及可验证性，并按需修订。
+- `cex-spot-matching`：现货订单、撮合资格与顺序、撤改单竞争及相关行情恢复专项测试设计。
+- `cex-futures-risk`：合约仓位、保证金、估值结算和风险处置专项场景分析与核对。
+- `cex-funds-reconciliation`：充提划转、费用、资金腿与账务/链上证据的一致性专项设计。
 
 ## 适用场景
 
@@ -35,9 +38,12 @@ cp -R web3-cex-business-skills/cex-requirement-review ~/.codex/skills/
 cp -R web3-cex-business-skills/cex-business-modeling ~/.codex/skills/
 cp -R web3-cex-business-skills/cex-testpoint-design ~/.codex/skills/
 cp -R web3-cex-business-skills/cex-testpoint-review ~/.codex/skills/
+cp -R web3-cex-business-skills/cex-spot-matching ~/.codex/skills/
+cp -R web3-cex-business-skills/cex-futures-risk ~/.codex/skills/
+cp -R web3-cex-business-skills/cex-funds-reconciliation ~/.codex/skills/
 ```
 
-重启或刷新 Codex 后，按对应的 `$skill-name` 调用。业务系列的四个 Skill 与 P01—P07 任务入口见 [`web3-cex-business-skills/`](web3-cex-business-skills/README.md)。
+重启或刷新 Codex 后，按对应的 `$skill-name` 调用。业务系列的七个 Skill 与已交付 Prompt 入口见 [`web3-cex-business-skills/`](web3-cex-business-skills/README.md)。
 
 ## 使用方式
 
